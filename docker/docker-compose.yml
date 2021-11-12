@@ -1,0 +1,32 @@
+version: "3.7"
+
+services:
+  database:
+    image: postgres:alpine3.14
+    container_name: store-db-srv
+    environment:
+      POSTGRES_USER: ${PG_USER}
+      POSTGRES_PASSWORD: ${PG_PASSWORD}
+      POSTGRES_DB: ${PG_DATABASE}
+      PG_FIRST_USER: ${PG_FIRST_USER}
+      PG_FIRST_DATABASE: ${PG_FIRST_DATABASE}
+      PG_FIRST_PASSWORD: ${PG_FIRST_PASSWORD}
+      PG_SECOND_USER: ${PG_SECOND_USER}
+      PG_SECOND_DATABASE: ${PG_SECOND_DATABASE}
+      PG_SECOND_PASSWORD: ${PG_SECOND_PASSWORD}
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+      - ./docker/init-sources.sh:/docker-entrypoint-initdb.d/init-sources.sh
+    networks:
+      - local
+
+volumes:
+  pg_data:
+
+networks:
+  local:
+    name: store-local
+    external: false

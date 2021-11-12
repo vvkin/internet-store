@@ -12,7 +12,14 @@
       "allowJs": true,
       "sourceMap": true,
       "outDir": "./build",
-      "baseUrl": "./src",
+      "baseUrl": "./",
+       "paths": {
+           "@src/*": ["./src/*"],
+           "@lib/*": ["./src/lib/*"],
+           "@config/*": ["./src/config/*"],
+           "@plugins/*": ["./src/domain/*"],
+           "@model/*": ["./src/model/*"]
+        }
     },
     "include": ["src/**/*.ts", "test/**/*.ts",],
     "exclude": ["node_modules", "build"]

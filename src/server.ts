@@ -1,8 +1,8 @@
 import Fastify, { FastifyPluginAsync } from 'fastify';
-import { SERVER_CONFIG, config } from './config/config';
+import { config } from '@config/config';
 import { app } from './app';
 
-const { port, host, logger } = config[SERVER_CONFIG];
+const { port, host, logger } = config.server;
 
 const bootstrap = async (app: FastifyPluginAsync) => {
     try {
