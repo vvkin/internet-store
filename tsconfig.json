@@ -17,7 +17,7 @@
            "@src/*": ["./src/*"],
            "@lib/*": ["./src/lib/*"],
            "@config/*": ["./src/config/*"],
-           "@plugins/*": ["./src/domain/*"],
+           "@plugins/*": ["./src/plugins/*"],
            "@model/*": ["./src/model/*"]
         }
     },

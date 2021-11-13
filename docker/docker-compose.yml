@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.8"
 
 services:
   database:
@@ -16,10 +16,11 @@ services:
       PG_SECOND_PASSWORD: ${PG_SECOND_PASSWORD}
     restart: always
     ports:
-      - "5432:5432"
+      - "${PG_PORT}:${PG_PORT}"
     volumes:
       - pg_data:/var/lib/postgresql/data
       - ./docker/init-sources.sh:/docker-entrypoint-initdb.d/init-sources.sh
+      - ./docker/seeds:/seeds
     networks:
       - local
 
