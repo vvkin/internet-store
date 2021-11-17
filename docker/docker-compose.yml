@@ -5,22 +5,25 @@ services:
     image: postgres:alpine3.14
     container_name: store-db-srv
     environment:
-      POSTGRES_USER: ${PG_USER}
-      POSTGRES_PASSWORD: ${PG_PASSWORD}
-      POSTGRES_DB: ${PG_DATABASE}
-      PG_FIRST_USER: ${PG_FIRST_USER}
-      PG_FIRST_DATABASE: ${PG_FIRST_DATABASE}
-      PG_FIRST_PASSWORD: ${PG_FIRST_PASSWORD}
-      PG_SECOND_USER: ${PG_SECOND_USER}
-      PG_SECOND_DATABASE: ${PG_SECOND_DATABASE}
-      PG_SECOND_PASSWORD: ${PG_SECOND_PASSWORD}
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+      - MAIN_PG_USER
+      - MAIN_PG_DATABASE
+      - MAIN_PG_PASSWORD
+      - FIRST_PG_USER
+      - FIRST_PG_DATABASE
+      - FIRST_PG_PASSWORD
+      - SECOND_PG_USER
+      - SECOND_PG_DATABASE
+      - SECOND_PG_PASSWORD
     restart: always
     ports:
-      - "${PG_PORT}:${PG_PORT}"
+      - "5432:5432"
     volumes:
       - pg_data:/var/lib/postgresql/data
-      - ./docker/init-sources.sh:/docker-entrypoint-initdb.d/init-sources.sh
-      - ./docker/seeds:/seeds
+      - ./init-sources.sh:/docker-entrypoint-initdb.d/init-sources.sh
+      - ./seeds:/seeds
     networks:
       - local
 
