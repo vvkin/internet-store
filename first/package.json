@@ -7,15 +7,19 @@
         "pre-build": "rimraf ./build",
         "build": "yarn pre-build && yarn tsc -p ./tsconfig.json",
         "start": "node -r ts-node/register -r tsconfig-paths/register ./build/first/src/server.js",
+        "dev": "ts-node -r tsconfig-paths/register --files ./src/server.ts",
         "lint": "eslint . --ext .ts,.js",
         "lint:fix": "yarn lint --fix",
-        "valid": "yarn build && yarn lint"
+        "valid": "yarn build && yarn lint",
+        "compile-schemas": "json2ts --cwd src/model/schema --bannerComment \"\" -i src/model/schema -o src/model/dto && yarn lint:fix"
     },
     "dependencies": {
         "dotenv": "^10.0.0",
         "fastify": "^3.24.0",
         "fastify-autoload": "^3.9.0",
         "fastify-plugin": "^3.0.0",
+        "json-schema-to-typescript": "^10.1.5",
+        "knex": "^0.95.14",
         "pg": "^8.7.1"
     },
     "devDependencies": {

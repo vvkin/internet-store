@@ -2,5 +2,8 @@
     "name": "shared",
     "version": "1.0.0",
     "private": true,
-    "license": "MIT"
+    "license": "MIT",
+    "dependencies": {
+        "knex": "^0.95.14"
+    }
 }

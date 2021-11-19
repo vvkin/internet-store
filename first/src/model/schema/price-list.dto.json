@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "priceList": {
+            "type": "array",
+            "items": {
+                "$ref": "price-list-entry.json"
+            }
+        }
+    },
+    "required": ["priceList"],
+    "additionalProperties": false
+}

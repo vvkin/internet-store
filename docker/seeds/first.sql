@@ -1,7 +1,8 @@
 CREATE TABLE products (
     id serial PRIMARY KEY,
     name varchar(120) UNIQUE NOT NULL,
-    price numeric(15, 4) NOT NULL
+    price numeric(15, 4) NOT NULL,
+    description text
 );
 
 INSERT INTO products (name, price)
