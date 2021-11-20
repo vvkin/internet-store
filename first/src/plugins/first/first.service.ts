@@ -8,7 +8,7 @@ export class FirstService {
 
     async getPriceList(limit?: number): Promise<PriceListDto> {
         const items = await this.dao.getPriceList(limit);
-        if (!items) {
+        if (!items.length) {
             throw new EntityNotFound('Price list is empty');
         } else return { priceList: items };
     }

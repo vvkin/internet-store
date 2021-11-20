@@ -1,6 +1,7 @@
 import { join } from 'path';
 import { FastifyPluginAsync } from 'fastify';
 import fastifyAutoload, { AutoloadPluginOptions } from 'fastify-autoload';
+import { errorHandler } from '@shared/modules/fastify/error-hander';
 
 export type AutoloadOptions = {
     // additional options
@@ -11,6 +12,7 @@ const app: FastifyPluginAsync<AutoloadOptions> = async (fastify, opts) => {
         dir: join(__dirname, 'plugins'),
         options: opts,
     });
+    fastify.setErrorHandler(errorHandler);
 };
 
 export { app };

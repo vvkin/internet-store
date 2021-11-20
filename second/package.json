@@ -6,20 +6,27 @@
     "scripts": {
         "pre-build": "rimraf ./build",
         "build": "yarn pre-build && yarn tsc -p ./tsconfig.json",
-        "start": "node -r ts-node/register -r tsconfig-paths/register ./build/second/src/server.js",
+        "start": "node -r ts-node/register -r tsconfig-paths/register ./build/second/src/server.js | pino-pretty",
         "lint": "eslint . --ext .ts,.js",
         "lint:fix": "yarn lint --fix",
-        "valid": "yarn build && yarn lint"
+        "valid": "yarn build && yarn lint",
+        "compile-schemas": "json2ts --cwd src/schema --bannerComment \"\" -i src/schema -o src/model && yarn lint:fix"
     },
     "dependencies": {
         "dotenv": "^10.0.0",
         "fastify": "^3.24.0",
         "fastify-autoload": "^3.9.0",
         "fastify-plugin": "^3.0.0",
-        "pg": "^8.7.1"
+        "json-schema-ref-parser": "^9.0.9",
+        "knex": "^0.95.14",
+        "pg": "^8.7.1",
+        "qs": "^6.10.1"
     },
     "devDependencies": {
         "@types/node": "^16.11.7",
-        "@types/pg": "^8.6.1"
+        "@types/pg": "^8.6.1",
+        "@types/qs": "^6.9.7",
+        "json-schema-to-typescript": "^10.1.5",
+        "pino-pretty": "^7.2.0"
     }
 }

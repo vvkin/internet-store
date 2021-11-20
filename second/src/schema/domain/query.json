@@ -1,0 +1,15 @@
+{
+    "$id": "domain/query.json",
+    "type": "object",
+    "properties": {
+        "in": {
+            "type": "array",
+            "items": { "type": ["number", "string"] },
+            "uniqueItems": true
+        },
+        "min": { "type": "number", "minimum": 0 },
+        "max": { "type": "number", "minimum": 0 },
+        "like": { "type": "string" }
+    },
+    "additionalProperties": false
+}

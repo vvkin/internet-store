@@ -2,7 +2,7 @@
     "$id": "domain/price-list-item.json",
     "type": "object",
     "properties": {
-        "id": { "type": "number" },
+        "id": { "type": "integer" },
         "name": { "type": "string" },
         "price": { "type": "number" }
     },

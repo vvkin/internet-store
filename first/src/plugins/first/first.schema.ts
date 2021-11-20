@@ -17,7 +17,7 @@ export interface PriceListRequest {
 }
 
 export const initSchemas = async () => {
-    const { path } = config.schemas;
+    const { path } = config.schema;
     const parser = new RefParser();
 
     const priceListSchema = {

@@ -1,0 +1,12 @@
+{
+    "$id": "dto/search.dto.json",
+    "type": "object",
+    "properties": {
+        "products": {
+            "type": "array",
+            "items": { "$ref": "domain/product.json" }
+        }
+    },
+    "required": ["products"],
+    "additionalProperties": false
+}

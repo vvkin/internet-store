@@ -1,0 +1,11 @@
+{
+    "$id": "api/product/search-query.json",
+    "type": "object",
+    "properties": {
+        "id": { "$ref": "domain/query.json" },
+        "name": { "$ref": "domain/query.json" },
+        "price": { "$ref": "domain/query.json" },
+        "description": { "$ref": "domain/query.json" }
+    },
+    "additionalProperties": false
+}

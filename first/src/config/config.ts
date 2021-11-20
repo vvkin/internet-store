@@ -1,6 +1,10 @@
 import 'dotenv/config';
 import { join } from 'path';
-import { DatabaseConfig, ServerConfig } from '@shared/model/config';
+import {
+    DatabaseConfig,
+    SchemaConfig,
+    ServerConfig,
+} from '@shared/model/config';
 
 export const config = {
     server: {
@@ -15,7 +19,7 @@ export const config = {
         database: process.env.PG_DATABASE,
         password: process.env.PG_PASSWORD,
     } as DatabaseConfig,
-    schemas: {
+    schema: {
         path: join(__dirname, '../', 'schema/'),
-    },
+    } as SchemaConfig,
 };
