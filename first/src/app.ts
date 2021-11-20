@@ -10,7 +10,6 @@ const app: FastifyPluginAsync<AutoloadOptions> = async (fastify, opts) => {
     fastify.register(fastifyAutoload, {
         dir: join(__dirname, 'plugins'),
         options: opts,
-        prefix: 'api',
     });
 };
 

@@ -1,10 +1,11 @@
 {
+    "$id": "schema/dto/price-list.json",
     "type": "object",
     "properties": {
         "priceList": {
             "type": "array",
             "items": {
-                "$ref": "price-list-entry.json"
+                "$ref": "domain/price-list-item.json"
             }
         }
     },

@@ -1,0 +1,4 @@
+{
+    "$id": "dto/details.json",
+    "$ref": "domain/product.json"
+}

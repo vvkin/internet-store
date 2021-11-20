@@ -1,19 +1,19 @@
 import { DatabaseConnection } from '@shared/database/model';
-import { ProductDto } from '@model/dto/product.dto';
-import { PriceListEntry } from '@model/dto/price-list-entry';
+import { Product } from '@model/domain/product';
+import { PriceListItem } from '@model/domain/price-list-item';
 
 export class FirstDao {
     constructor(private db: DatabaseConnection) {}
 
-    async getProductDetails(id: number): Promise<ProductDto> {
-        const records = await this.db<ProductDto>('products')
+    async getProductDetails(id: number): Promise<Product> {
+        const records = await this.db<Product>('products')
             .select(['id', 'name', 'price', 'description'])
             .where({ id });
         return records[0];
     }
 
-    async getPriceList(limit?: number): Promise<PriceListEntry[]> {
-        const records = this.db<PriceListEntry>('products')
+    async getPriceList(limit?: number): Promise<PriceListItem[]> {
+        const records = this.db<PriceListItem>('products')
             .select(['id', 'name', 'price'])
             .modify((query) => (limit ? query.limit(limit) : query));
         return records;

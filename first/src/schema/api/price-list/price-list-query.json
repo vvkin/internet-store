@@ -1,0 +1,8 @@
+{
+    "$id": "api/price-list/price-list-query.json",
+    "type": "object",
+    "properties": {
+        "limit": { "type":  "number", "min":  1 }
+    },
+    "additionalProperties": false
+}

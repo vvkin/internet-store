@@ -1,6 +1,6 @@
 import { FirstDao } from '@plugins/first/first.dao';
 import { PriceListDto } from '@model/dto/price-list.dto';
-import { ProductDto } from '@model/dto/product.dto';
+import { DetailsDto } from '@model/dto/details.dto';
 
 export class FirstService {
     constructor(private dao: FirstDao) {}
@@ -10,8 +10,8 @@ export class FirstService {
         return items ? { priceList: items } : null;
     }
 
-    async getProductDetails(id: number): Promise<ProductDto | null> {
-        const product = await this.dao.getProductDetails(id);
-        return product ?? null;
+    async getProductDetails(id: number): Promise<DetailsDto | null> {
+        const details = await this.dao.getProductDetails(id);
+        return details ?? null;
     }
 }
