@@ -1,5 +1,5 @@
 {
-    "$id": "schema/dto/price-list.json",
+    "$id": "dto/price-list.json",
     "type": "object",
     "properties": {
         "priceList": {

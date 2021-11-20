@@ -3,7 +3,9 @@
     "version": "1.0.0",
     "private": true,
     "license": "MIT",
-    "dependencies": {
+    "dependencies": {},
+    "devDependencies": {
+        "fastify": "^3.24.0",
         "knex": "^0.95.14"
     }
 }

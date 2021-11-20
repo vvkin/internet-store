@@ -1,5 +1,5 @@
 {
-    "$id": "details/details-params.json",
+    "$id": "api/details/details-params.json",
     "type": "object",
     "properties": {
         "id": { "type": "number" }

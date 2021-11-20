@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as fastify from 'fastify';
-import { DatabaseConnection } from '@shared/database/model';
+import { DatabaseConnection } from '@shared/modules/database/model';
 import { FirstService } from '@plugins/first/first.service';
 
 declare module 'fastify' {

@@ -1,6 +1,6 @@
 import { knex } from 'knex';
 import { DatabaseConfig } from '../../model/config';
-import { DatabaseConnection } from '../model';
+import { DatabaseConnection } from './model';
 
 export const spawnPostgres = (config: DatabaseConfig): DatabaseConnection => {
     return knex({

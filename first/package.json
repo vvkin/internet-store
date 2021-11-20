@@ -6,7 +6,7 @@
     "scripts": {
         "pre-build": "rimraf ./build",
         "build": "yarn pre-build && yarn tsc -p ./tsconfig.json",
-        "start": "node -r ts-node/register -r tsconfig-paths/register ./build/first/src/server.js",
+        "start": "node -r ts-node/register -r tsconfig-paths/register ./build/first/src/server.js | pino-pretty",
         "dev": "ts-node -r tsconfig-paths/register --files ./src/server.ts",
         "lint": "eslint . --ext .ts,.js",
         "lint:fix": "yarn lint --fix",
@@ -25,6 +25,7 @@
     "devDependencies": {
         "@types/node": "^16.11.7",
         "@types/pg": "^8.6.1",
-        "json-schema-to-typescript": "^10.1.5"
+        "json-schema-to-typescript": "^10.1.5",
+        "pino-pretty": "^7.2.0"
     }
 }
