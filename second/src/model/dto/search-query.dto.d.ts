@@ -1,4 +1,4 @@
-export interface SearchQuery {
+export interface SearchQueryDto {
     id?: {
         includes?: number[];
         min?: number;

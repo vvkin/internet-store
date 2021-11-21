@@ -2,6 +2,10 @@ import { DatabaseConnection } from '@shared/modules/database/model';
 import { WhereQuery } from '@shared/modules/database/model/where.model';
 import { Builder } from '@shared/modules/database/builder';
 import { Product } from '@model/domain/product';
+import { StringQuery } from '@model/domain/string-query';
+import { NumberQuery } from '@model/domain/number-query';
+
+type BuildEntry = [string, NumberQuery & StringQuery];
 
 export class SecondDao {
     constructor(private db: DatabaseConnection) {}
@@ -10,7 +14,7 @@ export class SecondDao {
         const baseSql = this.db.select().from('products');
         const builder = new Builder(baseSql);
 
-        for (const [column, filters] of Object.entries(query)) {
+        for (const [column, filters] of Object.entries(query) as BuildEntry[]) {
             builder
                 .includes(column, filters.includes)
                 .min(column, filters.min)

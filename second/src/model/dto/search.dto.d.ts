@@ -3,6 +3,6 @@ export interface SearchDto {
         id: number;
         name: string;
         price: number;
-        description: string;
+        description?: string;
     }[];
 }

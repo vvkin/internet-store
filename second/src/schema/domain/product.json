@@ -7,6 +7,6 @@
         "price": { "type": "number" },
         "description": { "type": "string" }
     },
-    "required": ["id", "name", "price", "description"],
+    "required": ["id", "name", "price"],
     "additionalProperties": false
 }

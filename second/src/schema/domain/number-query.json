@@ -4,12 +4,11 @@
     "properties": {
         "includes": {
             "type": "array",
-            "items": { "type": ["number", "string"] },
+            "items": { "type": "number" },
             "uniqueItems": true
         },
         "min": { "type": "number", "minimum": 0 },
-        "max": { "type": "number", "minimum": 0 },
-        "like": { "type": "string" }
+        "max": { "type": "number", "minimum": 0 }
     },
     "additionalProperties": false
 }

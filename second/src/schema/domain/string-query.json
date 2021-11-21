@@ -1,0 +1,13 @@
+{
+    "$id": "domain/query.json",
+    "type": "object",
+    "properties": {
+        "includes": {
+            "type": "array",
+            "items": { "type": "string" },
+            "uniqueItems": true
+        },
+        "like": { "type": "string" }
+    },
+    "additionalProperties": false
+}
