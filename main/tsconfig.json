@@ -3,13 +3,16 @@
     "compilerOptions": {
         "outDir": "./build",
         "baseUrl": "./",
+        "typeRoots": ["./@types"],
         "paths": {
             "@src/*": ["./src/*"],
             "@lib/*": ["./src/lib/*"],
             "@config/*": ["./src/config/*"],
             "@plugins/*": ["./src/plugins/*"],
             "@model/*": ["./src/model/*"],
-            "@shared/*": ["../shared/*"]
+            "@shared/*": ["../shared/*"],
+            "@schema/*": ["./src/schema/*"],
+            "@modules/*": ["./src/modules/*"],
         }
     },
     "include": ["src/**/*.ts", "test/**/*.ts"],

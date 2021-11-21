@@ -13,7 +13,7 @@ export class Builder {
         return this;
     }
 
-    in(column: string, values?: (string | number)[]): Builder {
+    includes(column: string, values?: (string | number)[]): Builder {
         if (values) this.query = this.query.whereIn(column, values);
         return this;
     }

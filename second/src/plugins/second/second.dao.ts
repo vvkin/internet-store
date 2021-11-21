@@ -12,7 +12,7 @@ export class SecondDao {
 
         for (const [column, filters] of Object.entries(query)) {
             builder
-                .in(column, filters.in)
+                .includes(column, filters.includes)
                 .min(column, filters.min)
                 .max(column, filters.max)
                 .like(column, filters.like);

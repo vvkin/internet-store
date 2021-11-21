@@ -1,24 +1,24 @@
 export interface SearchQuery {
     id?: {
-        in?: (number | string)[];
+        includes?: (number | string)[];
         min?: number;
         max?: number;
         like?: string;
     };
     name?: {
-        in?: (number | string)[];
+        includes?: (number | string)[];
         min?: number;
         max?: number;
         like?: string;
     };
     price?: {
-        in?: (number | string)[];
+        includes?: (number | string)[];
         min?: number;
         max?: number;
         like?: string;
     };
     description?: {
-        in?: (number | string)[];
+        includes?: (number | string)[];
         min?: number;
         max?: number;
         like?: string;

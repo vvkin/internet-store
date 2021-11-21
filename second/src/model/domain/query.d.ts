@@ -1,5 +1,5 @@
 export interface Query {
-    in?: (number | string)[];
+    includes?: (number | string)[];
     min?: number;
     max?: number;
     like?: string;

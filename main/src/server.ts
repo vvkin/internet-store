@@ -1,4 +1,5 @@
 import Fastify, { FastifyPluginAsync } from 'fastify';
+import { parse } from 'qs';
 import { config } from '@config/config';
 import { app } from './app';
 
@@ -6,7 +7,10 @@ const { port, host, logger } = config.server;
 
 const bootstrap = async (app: FastifyPluginAsync) => {
     try {
-        const server = Fastify({ logger });
+        const server = Fastify({
+            logger,
+            querystringParser: (str) => parse(str),
+        });
         server.register(app);
         await server.listen(port, host);
     } catch (err) {

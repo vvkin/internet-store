@@ -1,0 +1,11 @@
+{
+    "$id":  "dto/search-query.dto.json",
+    "type": "object",
+    "properties": {
+        "id": { "$ref": "domain/number-query.json" },
+        "name": { "$ref": "domain/string-query.json" },
+        "price": { "$ref": "domain/number-query.json" },
+        "description": { "$ref": "domain/string-query.json" }
+    },
+    "additionalProperties": false
+}
