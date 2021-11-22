@@ -1,0 +1,9 @@
+{
+    "$id": "api/products/product-params.json",
+    "type": "object",
+    "properties": {
+        "id": { "type":  "integer" }
+    },
+    "required": ["id"],
+    "additionalProperties": false
+}

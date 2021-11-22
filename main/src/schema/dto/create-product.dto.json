@@ -1,0 +1,27 @@
+{
+    "$id": "dto/create-product.dto.json",
+    "type": "object",
+    "properties": {
+        "supplierId": { "type":  "integer" },
+        "categoryId": { "type":  "integer" },
+        "name": { "type":  "string" },
+        "price": { "type": "number", "minimum": 0 },
+        "volume": { "type":  "number", "exclusiveMinimum": 0 },
+        "degree": { "type":  "number", "exclusiveMinimum": 0 },
+        "unitsInStock": { "type":  "number", "minimum": 0 },
+        "discount": { "type": "number", "minimum": 0, "maximum": 1 },
+        "description": { "type": "string" }
+    },
+    "required": [
+        "supplierId",
+        "categoryId",
+        "name",
+        "price",
+        "volume",
+        "degree",
+        "discount",
+        "description",
+        "unitsInStock"
+    ],
+    "additionalProperties": false
+}

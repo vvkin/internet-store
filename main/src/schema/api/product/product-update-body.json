@@ -1,0 +1,4 @@
+{
+    "$id": "api/product/product-update-body.json",
+    "$ref": "dto/create-product.dto.json"
+}
