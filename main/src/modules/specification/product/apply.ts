@@ -7,8 +7,10 @@ export const applyProductSpecification = (
 ): Product[] => {
     const columns = Object.keys(specificationMap) as (keyof Product)[];
     return items.filter((item) => {
-        return columns.every((column) =>
-            specificationMap[column]?.isSatisfiedBy(item[column] as any)
+        return columns.every(
+            (column) =>
+                column in item &&
+                specificationMap[column]?.isSatisfiedBy(item[column] as any)
         );
     });
 };

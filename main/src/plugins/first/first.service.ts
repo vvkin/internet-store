@@ -12,6 +12,10 @@ export class FirstService {
         const url = `${firstHost}/api/public/price-list`;
         const { data } = await getRequest<{ priceList: Product[] }>(url);
         const specificationMap = buildProductSpecificationMap(query);
-        return applyProductSpecification(data.priceList, specificationMap);
+        const products = applyProductSpecification(
+            data.priceList,
+            specificationMap
+        );
+        return products ?? [];
     }
 }

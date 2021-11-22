@@ -12,6 +12,6 @@ export class SecondService {
         const querystring = stringify(query);
         const url = `${secondHost}/api/public/search`;
         const { data } = await getRequest<ProductDto>(url + '?' + querystring);
-        return data.products;
+        return data.products ?? [];
     }
 }
