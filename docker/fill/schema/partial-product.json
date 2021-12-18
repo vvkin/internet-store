@@ -1,0 +1,14 @@
+{
+  "name": {
+    "type": "uuid",
+    "value": "product"
+  },
+  "price": {
+    "type": "float",
+    "value": [0, 500, 3]
+  },
+  "description": {
+    "type": "lorem",
+    "value": 5
+  }
+}

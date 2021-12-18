@@ -1,0 +1,38 @@
+{
+  "supplier_id": {
+    "type": "pick",
+    "value": []
+  },
+  "category_id": {
+    "type": "pick",
+    "value": []
+  },
+  "name": {
+    "type": "uuid",
+    "value": "product"
+  },
+  "price": {
+    "type": "float",
+    "value": [0, 500, 3]
+  },
+  "volume": {
+    "type": "float",
+    "value": [0, 2, 2]
+  },
+  "degree": {
+    "type": "float",
+    "value": [0, 1, 1]
+  },
+  "units_in_stock": {
+    "type": "int",
+    "value": [0, 500]
+  },
+  "discount": {
+    "type": "float",
+    "value": [0, 1, 3]
+  },
+  "description": {
+    "type": "lorem",
+    "value": 5
+  }
+}

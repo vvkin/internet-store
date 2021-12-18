@@ -1,0 +1,18 @@
+{
+  "country_id": {
+    "type": "pick",
+    "value": []
+  },
+  "company_name": {
+    "type": "uuid",
+    "value": "company"
+  },
+  "contact_name": {
+    "type": "uuid",
+    "value": ["contact-name", 30]
+  },
+  "email": {
+    "type": "email",
+    "value": "mock.mock"
+  }
+}
