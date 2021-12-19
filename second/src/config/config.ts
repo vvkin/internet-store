@@ -22,4 +22,7 @@ export const config = {
     schema: {
         path: join(__dirname, '../', 'schema/'),
     } as SchemaConfig,
+    search: {
+        pageSize: 5000,
+    },
 };

@@ -4,6 +4,7 @@ import {
     PriceListRequest,
     initSchemas,
 } from '@plugins/first/first.schema';
+import { delay } from '@lib/time.utils';
 
 export const firstRoutes: FastifyPluginAsync = async (fastify) => {
     const { firstService } = fastify;
@@ -27,6 +28,7 @@ export const firstRoutes: FastifyPluginAsync = async (fastify) => {
         handler: async (request, reply) => {
             const { limit } = request.query;
             const priceList = await firstService.getPriceList(limit);
+            await delay(20e3); // 20 seconds
             reply.code(200).send(priceList);
         },
     });

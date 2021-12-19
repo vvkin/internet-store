@@ -1,0 +1,9 @@
+{
+  "$id": "api/product/list-query.json",
+  "type": "object",
+  "properties": {
+    "page": { "type": "number", "exclusiveMinimum": 0 }
+  },
+  "required": ["page"],
+  "additionalProperties": false
+}

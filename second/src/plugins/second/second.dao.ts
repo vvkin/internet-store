@@ -30,4 +30,13 @@ export class SecondDao {
         const rawResult = await this.db.raw<{ rows: Product[] }>(rawSql);
         return rawResult.rows;
     }
+
+    async getPage(pageNumber: number, pageSize: number): Promise<Product[]> {
+        const products = this.db
+            .select<Product[]>('*')
+            .from('products')
+            .offset((pageNumber - 1) * pageSize)
+            .limit(pageSize);
+        return products;
+    }
 }
