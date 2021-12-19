@@ -12,6 +12,7 @@ export const config = {
         port: process.env.PORT ?? 8080,
         host: process.env.HOST ?? '0.0.0.0',
         logger: true,
+        pluginTimeout: 240000,
     } as ServerConfig,
     database: {
         host: process.env.PG_HOST,

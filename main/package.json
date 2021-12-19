@@ -18,12 +18,14 @@
         "json-schema-to-typescript": "^10.1.5"
     },
     "dependencies": {
+        "@types/node-cron": "^3.0.0",
         "dotenv": "^10.0.0",
         "fastify": "^3.23.0",
         "fastify-autoload": "^3.9.0",
         "fastify-plugin": "^3.0.0",
         "json-schema-ref-parser": "^9.0.9",
         "knex": "^0.95.14",
+        "node-cron": "^3.0.0",
         "pg": "^8.7.1",
         "qs": "^6.10.1",
         "undici": "^4.10.2"

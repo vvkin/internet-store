@@ -3,13 +3,14 @@ import { parse } from 'qs';
 import { config } from '@config/config';
 import { app } from './app';
 
-const { port, host, logger } = config.server;
+const { port, host, logger, pluginTimeout } = config.server;
 
 const bootstrap = async (app: FastifyPluginAsync) => {
     try {
         const server = Fastify({
             logger,
             querystringParser: (str) => parse(str),
+            pluginTimeout,
         });
         server.register(app);
         await server.listen(port, host);

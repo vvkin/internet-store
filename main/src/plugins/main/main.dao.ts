@@ -47,8 +47,8 @@ export class MainDao {
         return rawResult.rows;
     }
 
-    async getProductById(id: number): Promise<Product> {
-        const products = await this.db
+    private getProductBaseQuery() {
+        return this.db
             .select<Product[]>([
                 'p.id as id',
                 'p.name as name',
@@ -63,9 +63,16 @@ export class MainDao {
             ])
             .from('products as p')
             .join('categories as c', 'p.category_id', 'c.id')
-            .join('suppliers as s', 'p.supplier_id', 's.id')
-            .where('p.id', id);
+            .join('suppliers as s', 'p.supplier_id', 's.id');
+    }
+
+    async getProductById(id: number): Promise<Product> {
+        const products = await this.getProductBaseQuery().where({ id });
         return products[0];
+    }
+
+    async getAll(): Promise<Product[]> {
+        return this.getProductBaseQuery();
     }
 
     async deleteProductById(id: number): Promise<void> {

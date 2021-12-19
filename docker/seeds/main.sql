@@ -75,3 +75,11 @@ VALUES (1, 1, 'Obolon Magnat', 2.79, 500, 5.2, 212, 0.0, 'A glass of Magnat beer
        (5, 1, 'Lagunitas DayTime IPA', 2.30, 500.0, 4, 323, 0.1, '98 calories. 4% ABV. Built for the Day. Light in the things that weigh you down, yet crisp & hop-forward.'),
        (6, 3, 'Montelobos Tobala Mezcal', 105.13, 750.0, 46.9, 23, 0.1, 'Born from centuries of mezcalero craft and enlightened by the methodical pursuit of perfection, Montelobos Tobala is an unaged joven mezcal, crafted from meticulously cultivated agave, which is roasted underground, wild fermented and small batch.')
 ;
+
+CREATE INDEX idx_products_price ON products (price);
+
+CREATE EXTENSION pg_trgm;
+
+CREATE INDEX trgm_idx_products_name ON products USING gin (name gin_trgm_ops);
+
+CREATE INDEX trgm_idx_products_description ON products USING gin (description gin_trgm_ops);

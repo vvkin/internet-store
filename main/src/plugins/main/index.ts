@@ -8,6 +8,8 @@ export const main: FastifyPluginAsync = async (fastify) => {
     const { db, firstService, secondService } = fastify;
     const mainDao = new MainDao(db);
     const mainService = new MainService(mainDao, firstService, secondService);
+    await mainService.scheduleCacheUpdate();
+    await mainService.updateCache();
 
     fastify.decorate('mainService', mainService);
     fastify.register(mainRoutes, { prefix: '/api/public' });
