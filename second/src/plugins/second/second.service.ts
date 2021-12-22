@@ -21,8 +21,8 @@ export class SecondService {
         } else return { products };
     }
 
-    async getPage(pageNumber: number): Promise<ListDto> {
-        const products = await this.dao.getPage(pageNumber, pageSize);
+    async getListPage(page: number): Promise<ListDto> {
+        const products = await this.dao.getPage(page, pageSize);
         const last = products.length < pageSize;
         return { products, last };
     }

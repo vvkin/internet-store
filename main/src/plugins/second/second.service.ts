@@ -28,7 +28,7 @@ export class SecondService {
         return data.products;
     }
 
-    async getProductsByQuery(query: SearchQueryDto): Promise<Product[]> {
+    async getProductsByQuery(query: SearchQueryDto): Promise<ProductDto[]> {
         const products = this.fetchProductsSearch(query);
         return products ?? [];
     }
@@ -43,7 +43,7 @@ export class SecondService {
         } else return cachedPage;
     }
 
-    async getProductsListAllPages(): Promise<Product[]> {
+    async getProductsListAllPages(): Promise<ProductDto[]> {
         const pages: Product[][] = [];
         for (let page = 1; ; ++page) {
             const { products, last } = await this.getProductsListPage(page);

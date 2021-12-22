@@ -31,12 +31,11 @@ export class SecondDao {
         return rawResult.rows;
     }
 
-    async getPage(pageNumber: number, pageSize: number): Promise<Product[]> {
-        const products = this.db
+    getPage(page: number, pageSize: number): Promise<Product[]> {
+        return this.db
             .select<Product[]>('*')
             .from('products')
-            .offset((pageNumber - 1) * pageSize)
+            .offset((page - 1) * pageSize)
             .limit(pageSize);
-        return products;
     }
 }

@@ -24,7 +24,7 @@ export const secondRoutes: FastifyPluginAsync = async (fastify) => {
         schema: listSchema,
         handler: async (request, reply) => {
             const { page } = request.query;
-            const listDto = await secondService.getPage(page);
+            const listDto = await secondService.getListPage(page);
             reply.code(200).send(listDto);
         },
     });
