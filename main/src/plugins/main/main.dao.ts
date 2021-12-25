@@ -84,8 +84,11 @@ export class MainDao {
         await this.db('products').update(entity).where({ id });
     }
 
-    async createProduct(dto: CreateProductDto): Promise<void> {
+    async createProduct(dto: CreateProductDto): Promise<Product> {
         const entity = MainDao.mapDtoToEntity(dto);
-        await this.db('products').insert(entity);
+        const products = await this.db('products')
+            .insert(entity)
+            .returning('*');
+        return products[0];
     }
 }

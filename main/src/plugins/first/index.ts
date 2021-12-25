@@ -4,7 +4,7 @@ import { FirstService } from '@plugins/first/first.service';
 import { ListCache } from '@lib/list-cache';
 import { Product } from '@model/domain/product';
 
-export const first: FastifyPluginAsync = async (fastify) => {
+const first: FastifyPluginAsync = async (fastify) => {
     const cache = new ListCache<Product>();
     const firstService = new FirstService(cache);
     fastify.decorate('firstService', firstService);

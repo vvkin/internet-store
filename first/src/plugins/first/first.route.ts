@@ -28,7 +28,7 @@ export const firstRoutes: FastifyPluginAsync = async (fastify) => {
         handler: async (request, reply) => {
             const { limit } = request.query;
             const priceList = await firstService.getPriceList(limit);
-            await delay(20e3); // 20 seconds
+            // await delay(20e3); // 20 seconds
             reply.code(200).send(priceList);
         },
     });

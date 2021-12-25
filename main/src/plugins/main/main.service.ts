@@ -53,8 +53,8 @@ export class MainService {
         await this.dao.updateProductById(id, dto);
     }
 
-    async createProduct(dto: CreateProductDto): Promise<void> {
-        await this.dao.createProduct(dto);
+    async createProduct(dto: CreateProductDto): Promise<Product> {
+        return this.dao.createProduct(dto);
     }
 
     async updateCache(): Promise<void> {
