@@ -65,12 +65,23 @@ export class MainDao {
         return this.getProductBaseQuery();
     }
 
-    async deleteProductById(id: number): Promise<void> {
-        await this.db<number>('products').delete('id').where('id', id);
+    async deleteProductById(id: number): Promise<Product> {
+        const products = await this.db('products')
+            .delete('id')
+            .where({ id })
+            .returning('*');
+        return products[0];
     }
 
-    async updateProductById(id: number, dto: UpdateProductDto): Promise<void> {
-        await this.db('products').update(dto).where({ id });
+    async updateProductById(
+        id: number,
+        dto: UpdateProductDto
+    ): Promise<Product> {
+        const products = await this.db('products')
+            .update(dto)
+            .where({ id })
+            .returning('*');
+        return products[0];
     }
 
     async createProduct(dto: CreateProductDto): Promise<Product> {

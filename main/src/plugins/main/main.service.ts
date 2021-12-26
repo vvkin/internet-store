@@ -49,12 +49,15 @@ export class MainService {
         } else return product;
     }
 
-    async deleteProductById(id: number): Promise<void> {
-        await this.dao.deleteProductById(id);
+    async deleteProductById(id: number): Promise<Product> {
+        return this.dao.deleteProductById(id);
     }
 
-    async updateProductById(id: number, dto: UpdateProductDto): Promise<void> {
-        await this.dao.updateProductById(id, dto);
+    async updateProductById(
+        id: number,
+        dto: UpdateProductDto
+    ): Promise<Product> {
+        return this.dao.updateProductById(id, dto);
     }
 
     async createProduct(dto: CreateProductDto): Promise<Product> {

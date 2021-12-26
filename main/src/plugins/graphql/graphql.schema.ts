@@ -8,6 +8,8 @@ export const graphqlSchema = `
     
     type Mutation {
         createProduct(data: CreateProduct!): Product!
+        deleteProduct(id: ID!): Product!
+        updateProduct(id: ID!, data: UpdateProduct!): Product!
         createSupplier(data: CreateSupplier!): Supplier!
         createOrder(data: CreateOrder!): Order!
     }
@@ -35,6 +37,18 @@ export const graphqlSchema = `
         degree: Int!
         unitsInStock: Int!
         discount: Float!
+    }
+        
+    input UpdateProduct {
+        supplierId: Int
+        categoryId: Int
+        name: String
+        price: Float
+        volume: Float
+        degree: Int
+        unitsInStock: Int
+        discount: Float
+        description: String
     }
     
     type Supplier {

@@ -2,6 +2,7 @@ import { CreateProductDto } from '@model/dto/create-product.dto';
 import { MainService } from '@plugins/main/main.service';
 import { CreateOrderDto } from '@model/dto/create-order.dto';
 import { CreateSupplierDto } from '@model/dto/create-supplier.dto';
+import { UpdateProductDto } from '@model/dto/update-product.dto';
 
 export const makeGraphqlResolvers = (mainService: MainService) => ({
     Query: {
@@ -30,6 +31,17 @@ export const makeGraphqlResolvers = (mainService: MainService) => ({
         ) => {
             const { data } = context;
             return mainService.createProduct(data);
+        },
+        deleteProduct: async (_: unknown, context: { id: number }) => {
+            const { id } = context;
+            return mainService.deleteProductById(id);
+        },
+        updateProduct: async (
+            _: unknown,
+            context: { id: number; data: UpdateProductDto }
+        ) => {
+            const { id, data } = context;
+            return mainService.updateProductById(id, data);
         },
         createSupplier: async (
             _: unknown,
