@@ -1,14 +1,14 @@
 export const graphqlSchema = `
     type Query {
-        search(name: String!): [Product]!
-        product(id: ID!): Product!
-        supplier(id: ID!): Supplier!
-        order(id: ID!): Order!
+        search(name: String!): [Product!]!
+        product(id: ID!): Product
+        supplier(id: ID!): Supplier
+        order(id: ID!): Order
     }
     
     type Mutation {
         createProduct(data: CreateProduct!): Product!
-        deleteProduct(id: ID!): Product!
+        deleteProduct(id: ID!): Product
         updateProduct(id: ID!, data: UpdateProduct!): Product!
         createSupplier(data: CreateSupplier!): Supplier!
         createOrder(data: CreateOrder!): Order!
