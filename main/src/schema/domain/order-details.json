@@ -1,0 +1,12 @@
+{
+    "$id": "domain/order-details.json",
+    "type": "object",
+    "properties": {
+        "id": { "type": "integer" },
+        "productId": { "type": "integer" },
+        "orderId": { "type": "integer" },
+        "quantity": { "type": "integer" }
+    },
+    "required": ["deliveryMethodId", "fullName", "phone", "address", "requiredDate"],
+    "additionalProperties": false
+}

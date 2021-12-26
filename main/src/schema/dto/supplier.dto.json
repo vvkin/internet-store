@@ -1,0 +1,4 @@
+{
+    "$id": "dto/supplier.dto.json",
+    "$ref": "domain/supplier.json"
+}

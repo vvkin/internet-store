@@ -2,17 +2,12 @@ import { FastifyPluginAsync } from 'fastify';
 import fp from 'fastify-plugin';
 import mercurius from 'mercurius';
 
-import { GraphqlService } from '@plugins/graphql/graphql.service';
 import { makeGraphqlResolvers } from '@plugins/graphql/graphql.resolver';
 import { graphqlSchema } from '@plugins/graphql/graphql.schema';
 
 const graphql: FastifyPluginAsync = async (fastify) => {
     const { mainService } = fastify;
-
-    const graphqlService = new GraphqlService(mainService);
-    const graphqlResolver = makeGraphqlResolvers(graphqlService);
-
-    fastify.log.info(graphqlSchema);
+    const graphqlResolver = makeGraphqlResolvers(mainService);
 
     fastify.register(mercurius, {
         schema: graphqlSchema,

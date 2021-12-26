@@ -1,18 +1,22 @@
 import { schedule } from 'node-cron';
-import { MainDao } from '@plugins/main/main.dao';
-import { SearchQueryDto } from '@model/dto/search-query.dto';
-import { ProductDto } from '@model/dto/product.dto';
-import { FirstService } from '@plugins/first/first.service';
-import { SecondService } from '@plugins/second/second.service';
-import { Product } from '@model/domain/product';
 import { EntityNotFound } from '@shared/modules/errors/abstract-errors';
-import { ProductsDto } from '@model/dto/products.dto';
-import { UpdateProductDto } from '@model/dto/update-product.dto';
-import { CreateProductDto } from '@model/dto/create-product.dto';
+import { WhereQuery } from '@shared/modules/database/model/where.model';
 import { everyDayAt } from '@lib/cron.utils';
 import { buildProductSpecificationMap } from '@modules/specification/product/build-map';
 import { applyProductSpecification } from '@modules/specification/product/apply';
-import { WhereQuery } from '@shared/modules/database/model/where.model';
+import { MainDao } from '@plugins/main/main.dao';
+import { FirstService } from '@plugins/first/first.service';
+import { SecondService } from '@plugins/second/second.service';
+import { SearchQueryDto } from '@model/dto/search-query.dto';
+import { ProductDto } from '@model/dto/product.dto';
+import { Product } from '@model/domain/product';
+import { ProductsDto } from '@model/dto/products.dto';
+import { UpdateProductDto } from '@model/dto/update-product.dto';
+import { CreateProductDto } from '@model/dto/create-product.dto';
+import { OrderDto } from '@model/dto/order.dto';
+import { CreateOrderDto } from '@model/dto/create-order.dto';
+import { CreateSupplierDto } from '@model/dto/create-supplier.dto';
+import { SupplierDto } from '@model/dto/supplier.dto';
 
 export class MainService {
     constructor(
@@ -55,6 +59,30 @@ export class MainService {
 
     async createProduct(dto: CreateProductDto): Promise<Product> {
         return this.dao.createProduct(dto);
+    }
+
+    async createSupplier(dto: CreateSupplierDto): Promise<SupplierDto> {
+        return this.dao.createSupplier(dto);
+    }
+
+    async getSupplierById(id: number): Promise<SupplierDto> {
+        return this.dao.getSupplierById(id);
+    }
+
+    async getOrderById(id: number): Promise<OrderDto> {
+        const order = await this.dao.getOrderById(id);
+        const details = await this.dao.getOrderDetailsById(id);
+        return { products: details, ...order };
+    }
+
+    async createOrder(dto: CreateOrderDto): Promise<OrderDto> {
+        const { products, ...orderDto } = dto;
+        const order = await this.dao.createOrder(orderDto);
+        const details = await this.dao.addOrderDetails(
+            order.id as number,
+            products
+        );
+        return { products: details, ...order };
     }
 
     async updateCache(): Promise<void> {

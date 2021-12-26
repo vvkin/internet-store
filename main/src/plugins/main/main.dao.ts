@@ -6,25 +6,15 @@ import { NumberQuery } from '@shared/modules/database/model/number-query.model';
 import { StringQuery } from '@shared/modules/database/model/string-query.model';
 import { UpdateProductDto } from '@model/dto/update-product.dto';
 import { CreateProductDto } from '@model/dto/create-product.dto';
+import { Supplier } from '@model/domain/supplier';
+import { Order } from '@model/domain/order';
+import { OrderDetails } from '@model/domain/order-details';
+import { CreateSupplierDto } from '@model/dto/create-supplier.dto';
 
 type BuildEntry = [string, NumberQuery & StringQuery];
 
 export class MainDao {
     constructor(private db: DatabaseConnection) {}
-
-    private static mapDtoToEntity(dto: CreateProductDto | UpdateProductDto) {
-        return {
-            name: dto.name,
-            supplier_id: dto.supplierId,
-            category_id: dto.categoryId,
-            price: dto.price,
-            volume: dto.volume,
-            degree: dto.degree,
-            units_in_stock: dto.unitsInStock,
-            discount: dto.discount,
-            description: dto.description,
-        };
-    }
 
     private buildQuery(query: WhereQuery<Product>): string {
         const baseSql = this.db.select().from('products');
@@ -67,7 +57,7 @@ export class MainDao {
     }
 
     async getProductById(id: number): Promise<Product> {
-        const products = await this.getProductBaseQuery().where({ id });
+        const products = await this.getProductBaseQuery().where('p.id', id);
         return products[0];
     }
 
@@ -80,15 +70,41 @@ export class MainDao {
     }
 
     async updateProductById(id: number, dto: UpdateProductDto): Promise<void> {
-        const entity = MainDao.mapDtoToEntity(dto);
-        await this.db('products').update(entity).where({ id });
+        await this.db('products').update(dto).where({ id });
     }
 
     async createProduct(dto: CreateProductDto): Promise<Product> {
-        const entity = MainDao.mapDtoToEntity(dto);
-        const products = await this.db('products')
-            .insert(entity)
-            .returning('*');
+        const products = await this.db('products').insert(dto).returning('*');
         return products[0];
+    }
+
+    async getSupplierById(id: number): Promise<Supplier> {
+        return this.db('suppliers').where({ id }).first();
+    }
+
+    async createSupplier(dto: CreateSupplierDto): Promise<Supplier> {
+        const suppliers = await this.db('suppliers').insert(dto).returning('*');
+        return suppliers[0];
+    }
+
+    async createOrder(dto: Order): Promise<Order> {
+        const orders = await this.db('orders').insert(dto).returning('*');
+        return orders[0];
+    }
+
+    async addOrderDetails(
+        orderId: number,
+        products: OrderDetails[]
+    ): Promise<OrderDetails[]> {
+        const dto = products.map((record) => ({ orderId, ...record }));
+        return this.db('order_details').insert(dto).returning('*');
+    }
+
+    async getOrderById(id: number): Promise<Order> {
+        return this.db('orders').where({ id }).first();
+    }
+
+    async getOrderDetailsById(id: number): Promise<OrderDetails[]> {
+        return this.db('order_details').where({ orderId: id });
     }
 }

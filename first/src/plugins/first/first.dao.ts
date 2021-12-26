@@ -6,16 +6,15 @@ export class FirstDao {
     constructor(private db: DatabaseConnection) {}
 
     async getProductDetails(id: number): Promise<Product | undefined> {
-        const records = await this.db<Product>('products')
+        return this.db<Product>('products')
             .select(['id', 'name', 'price', 'description'])
-            .where({ id });
-        return records[0];
+            .where({ id })
+            .first();
     }
 
     async getPriceList(limit?: number): Promise<PriceListItem[]> {
-        const records = await this.db<PriceListItem>('products')
+        return this.db<PriceListItem>('products')
             .select(['id', 'name', 'price'])
             .modify((query) => (limit ? query.limit(limit) : query));
-        return records;
     }
 }

@@ -1,10 +1,15 @@
 export const graphqlSchema = `
     type Query {
         search(name: String!): [Product]!
+        product(id: ID!): Product!
+        supplier(id: ID!): Supplier!
+        order(id: ID!): Order!
     }
     
     type Mutation {
         createProduct(data: CreateProduct!): Product!
+        createSupplier(data: CreateSupplier!): Supplier!
+        createOrder(data: CreateOrder!): Order!
     }
     
     type Product {
@@ -30,5 +35,54 @@ export const graphqlSchema = `
         degree: Int!
         unitsInStock: Int!
         discount: Float!
+    }
+    
+    type Supplier {
+        id: ID!
+        countryId: Int!
+        companyName: String!
+        contactName: String!
+        email: String!
+    }
+    
+    input CreateSupplier {
+        countryId: Int!
+        companyName: String!
+        contactName: String!
+        email: String!
+    }
+    
+    type Order {
+        id: ID!
+        deliveryMethodId: ID!
+        products: [OrderDetails]!
+        fullName: String!
+        phone: String!
+        address: String!
+        requiredDate: String!
+        createdAt: String!
+        isConfirmed: Boolean!
+        isPaid: Boolean!
+    }
+    
+    type OrderDetails {
+        id: Int!
+        productId: Int!
+        orderId: Int!
+        quantity: Int!
+    }
+    
+    input CreateOrderDetails {
+        productId: Int!
+        quantity: Int!
+    }
+    
+    input CreateOrder {
+        deliveryMethodId: ID!
+        products: [CreateOrderDetails]!
+        fullName: String!
+        phone: String!
+        address: String!
+        requiredDate: String!
     }
 `;

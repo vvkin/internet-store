@@ -1,0 +1,13 @@
+{
+    "$id": "domain/supplier.json",
+    "type": "object",
+    "properties": {
+        "id": { "type": "integer" },
+        "countryId": { "type": "integer" },
+        "companyName": { "type": "string", "maxLength": 120 },
+        "contactName": { "type": "string", "maxLength":  30 },
+        "email": { "type": "string", "format": "email" }
+    },
+    "required": ["countryId", "companyName", "contactName", "email"],
+    "additionalProperties": false
+}

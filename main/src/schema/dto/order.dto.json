@@ -1,0 +1,20 @@
+{
+    "$id": "dto/order.dto.json",
+    "type": "object",
+    "allOf": [
+        { "$ref": "domain/order.json" },
+        {
+            "type": "object",
+            "properties": {
+                "products": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "domain/order-details.json"
+                    }
+                }
+            },
+            "required": ["products"],
+            "additionalProperties": false
+        }
+    ]
+}

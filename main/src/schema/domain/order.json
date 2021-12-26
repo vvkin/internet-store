@@ -1,0 +1,14 @@
+{
+    "$id": "domain/order.json",
+    "type": "object",
+    "properties": {
+        "id": { "type": "integer" },
+        "deliveryMethodId": { "type": "integer" },
+        "fullName": { "type": "string", "maxLength": 255 },
+        "phone": { "type": "string", "pattern":"^[0-9]{10}$" },
+        "address": { "type": "string", "maxLength": 50 },
+        "requiredDate": { "type": "string", "format": "date" }
+    },
+    "required": ["deliveryMethodId", "fullName", "phone", "address", "requiredDate"],
+    "additionalProperties": false
+}

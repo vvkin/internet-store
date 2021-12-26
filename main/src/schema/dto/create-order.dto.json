@@ -1,0 +1,28 @@
+{
+    "$id": "dto/create-order.dto.json",
+    "type": "object",
+    "properties": {
+        "deliveryMethodId": { "type": "integer" },
+        "products": {
+            "type": "array",
+            "items": { "$ref": "#/$defs/OrderDetailsDto" }
+        },
+        "fullName": { "type": "string", "maxLength": 255 },
+        "phone": { "type": "string", "pattern":"^[0-9]{10}$" },
+        "address": { "type": "string", "maxLength": 50 },
+        "requiredDate": { "type": "string", "format": "date" }
+    },
+    "required": ["deliveryMethodId", "products", "fullName", "phone", "address", "requiredDate"],
+    "additionalProperties": false,
+    "$defs": {
+        "OrderDetailsDto": {
+            "type": "object",
+            "properties": {
+                "productId": { "type": "integer" },
+                "quantity": { "type": "integer" }
+            },
+            "required": ["productId", "quantity"],
+            "additionalProperties": false
+        }
+    }
+}
