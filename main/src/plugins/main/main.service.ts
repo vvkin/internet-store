@@ -8,15 +8,15 @@ import { MainDao } from '@plugins/main/main.dao';
 import { FirstService } from '@plugins/first/first.service';
 import { SecondService } from '@plugins/second/second.service';
 import { SearchQueryDto } from '@model/dto/search-query.dto';
-import { ProductDto } from '@model/dto/product.dto';
 import { Product } from '@model/domain/product';
 import { ProductsDto } from '@model/dto/products.dto';
+import { ProductDto } from '@model/dto/product.dto';
 import { UpdateProductDto } from '@model/dto/update-product.dto';
 import { CreateProductDto } from '@model/dto/create-product.dto';
+import { SupplierDto } from '@model/dto/supplier.dto';
+import { CreateSupplierDto } from '@model/dto/create-supplier.dto';
 import { OrderDto } from '@model/dto/order.dto';
 import { CreateOrderDto } from '@model/dto/create-order.dto';
-import { CreateSupplierDto } from '@model/dto/create-supplier.dto';
-import { SupplierDto } from '@model/dto/supplier.dto';
 
 export class MainService {
     constructor(
@@ -49,18 +49,18 @@ export class MainService {
         } else return product;
     }
 
-    async deleteProductById(id: number): Promise<Product> {
+    async deleteProductById(id: number): Promise<ProductDto> {
         return this.dao.deleteProductById(id);
     }
 
     async updateProductById(
         id: number,
         dto: UpdateProductDto
-    ): Promise<Product> {
+    ): Promise<ProductDto> {
         return this.dao.updateProductById(id, dto);
     }
 
-    async createProduct(dto: CreateProductDto): Promise<Product> {
+    async createProduct(dto: CreateProductDto): Promise<ProductDto> {
         return this.dao.createProduct(dto);
     }
 

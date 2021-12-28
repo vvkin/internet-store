@@ -21,6 +21,7 @@ CREATE TABLE products (
     id serial PRIMARY KEY,
     supplier_id int REFERENCES suppliers NOT NULL,
     category_id int REFERENCES categories NOT NULL,
+    external_name varchar(120) DEFAULT 'MAIN' NOT NULL,
     name varchar(120) NOT NULL UNIQUE,
     price numeric(15, 6) NOT NULL,
     volume real NOT NULL,
@@ -49,8 +50,9 @@ CREATE TABLE orders (
 
 CREATE TABLE order_details (
     id serial PRIMARY KEY,
-    product_id int REFERENCES products NOT NULL,
+    product_id int NOT NULL,
     order_id int REFERENCES orders NOT NULL,
+    external_name varchar(120) NOT NULL,
     quantity int DEFAULT 1
 );
 

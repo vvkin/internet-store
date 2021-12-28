@@ -1,6 +1,7 @@
 import { DatabaseConnection } from '@shared/modules/database/model';
 import { WhereQuery } from '@shared/modules/database/model/where.model';
 import { Builder } from '@shared/modules/database/builder';
+import { objectToCamelCase } from '@shared/lib/case.utils';
 import { Product } from '@model/domain/product';
 import { StringQuery } from '@model/domain/string-query';
 import { NumberQuery } from '@model/domain/number-query';
@@ -28,7 +29,7 @@ export class SecondDao {
     async getProductsByQuery(query: WhereQuery<Product>): Promise<Product[]> {
         const rawSql = this.buildQuery(query);
         const rawResult = await this.db.raw<{ rows: Product[] }>(rawSql);
-        return rawResult.rows;
+        return rawResult.rows.map((obj) => objectToCamelCase(obj));
     }
 
     getPage(page: number, pageSize: number): Promise<Product[]> {

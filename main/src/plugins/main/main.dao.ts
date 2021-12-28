@@ -1,6 +1,5 @@
 import { DatabaseConnection } from '@shared/modules/database/model';
 import { WhereQuery } from '@shared/modules/database/model/where.model';
-import { Product } from 'second/src/model/domain/product';
 import { Builder } from '@shared/modules/database/builder';
 import { NumberQuery } from '@shared/modules/database/model/number-query.model';
 import { StringQuery } from '@shared/modules/database/model/string-query.model';
@@ -10,6 +9,9 @@ import { Supplier } from '@model/domain/supplier';
 import { Order } from '@model/domain/order';
 import { OrderDetails } from '@model/domain/order-details';
 import { CreateSupplierDto } from '@model/dto/create-supplier.dto';
+import { Product } from '@model/domain/product';
+import { OrderDetailsDto } from '@model/dto/create-order.dto';
+import { objectToCamelCase } from '@shared/lib/case.utils';
 
 type BuildEntry = [string, NumberQuery & StringQuery];
 
@@ -34,7 +36,7 @@ export class MainDao {
     async getProductsByQuery(query: WhereQuery<Product>): Promise<Product[]> {
         const rawSql = this.buildQuery(query);
         const rawResult = await this.db.raw<{ rows: Product[] }>(rawSql);
-        return rawResult.rows;
+        return rawResult.rows.map((obj) => objectToCamelCase(obj));
     }
 
     private getProductBaseQuery() {
@@ -42,6 +44,7 @@ export class MainDao {
             .select<Product[]>([
                 'p.id as id',
                 'p.name as name',
+                'p.external_name as externalName',
                 'c.name as category',
                 's.company_name as company',
                 'p.price as price',
@@ -105,7 +108,7 @@ export class MainDao {
 
     async addOrderDetails(
         orderId: number,
-        products: OrderDetails[]
+        products: OrderDetailsDto[]
     ): Promise<OrderDetails[]> {
         const dto = products.map((record) => ({ orderId, ...record }));
         return this.db('order_details').insert(dto).returning('*');

@@ -1,5 +1,6 @@
 CREATE TABLE products (
     id serial PRIMARY KEY,
+    external_name varchar(120) DEFAULT 'FIRST' NOT NULL,
     name varchar(120) UNIQUE NOT NULL,
     price numeric(15, 4) NOT NULL,
     description text

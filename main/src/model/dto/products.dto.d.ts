@@ -2,6 +2,7 @@ export interface ProductsDto {
     products: {
         id: number;
         name: string;
+        externalName: string;
         price: number;
         description?: string;
         category?: string;

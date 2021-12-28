@@ -1,6 +1,6 @@
 import './config/env.js';
 import { fillFirst, fillSecond, fillMain } from './lib/db.js';
 
-await fillFirst(5e4);
-await fillSecond(5e4);
-await fillMain(1e5);
+await fillFirst(1e4);
+await fillSecond(1e4);
+await fillMain(5e4);

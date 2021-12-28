@@ -7,14 +7,14 @@ export class FirstDao {
 
     async getProductDetails(id: number): Promise<Product | undefined> {
         return this.db<Product>('products')
-            .select(['id', 'name', 'price', 'description'])
+            .select(['id', 'externalName', 'name', 'price', 'description'])
             .where({ id })
             .first();
     }
 
     async getPriceList(limit?: number): Promise<PriceListItem[]> {
         return this.db<PriceListItem>('products')
-            .select(['id', 'name', 'price'])
+            .select(['id', 'externalName', 'name', 'price'])
             .modify((query) => (limit ? query.limit(limit) : query));
     }
 }

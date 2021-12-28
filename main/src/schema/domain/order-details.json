@@ -5,8 +5,9 @@
         "id": { "type": "integer" },
         "productId": { "type": "integer" },
         "orderId": { "type": "integer" },
+        "externalName": { "type": "string" },
         "quantity": { "type": "integer" }
     },
-    "required": ["deliveryMethodId", "fullName", "phone", "address", "requiredDate"],
+    "required": ["productId", "orderId", "externalName", "quantity"],
     "additionalProperties": false
 }

@@ -8,5 +8,6 @@ export interface CreateOrderDto {
 }
 export interface OrderDetailsDto {
     productId: number;
+    externalName: string;
     quantity: number;
 }

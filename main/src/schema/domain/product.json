@@ -4,6 +4,7 @@
     "properties": {
         "id": { "type": "integer" },
         "name": { "type": "string" },
+        "externalName": { "type": "string" },
         "price": { "type": "number" },
         "description": { "type": "string" },
         "category": { "type": "string" },
@@ -13,6 +14,6 @@
         "degree": { "type": "number", "exclusiveMinimum": 0 },
         "inStock": { "type": "integer", "minimum": 0 }
     },
-    "required": ["id", "name", "price"],
+    "required": ["id", "name", "price", "externalName"],
     "additionalProperties": false
 }

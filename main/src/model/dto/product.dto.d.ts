@@ -1,6 +1,7 @@
 export interface ProductDto {
     id: number;
     name: string;
+    externalName: string;
     price: number;
     description?: string;
     category?: string;

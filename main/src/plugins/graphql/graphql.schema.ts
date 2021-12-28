@@ -17,6 +17,7 @@ export const graphqlSchema = `
     type Product {
         id: ID!
         name: String!
+        externalName: String!
         price: Float!
         description: String!
         category: String
@@ -82,12 +83,14 @@ export const graphqlSchema = `
     type OrderDetails {
         id: Int!
         productId: Int!
+        externalName: String!
         orderId: Int!
         quantity: Int!
     }
     
     input CreateOrderDetails {
         productId: Int!
+        externalName: String!
         quantity: Int!
     }
     
